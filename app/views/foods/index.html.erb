@@ -1,0 +1,25 @@
+<button class="btn btn-dark bg-drak add mt-3 mb-2">Add Food</button>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Measurement Unit</th>
+      <th scope="col">UNit Price</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do | food| %>
+    <tr>
+      <th scope="row"><%= food.name %></th>
+      <td> <%= food.measurement_unit %> </td>
+      <td> $ <%= food.price %></td>
+      <td>
+        <%= link_to foods_url do %>
+        delete
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
