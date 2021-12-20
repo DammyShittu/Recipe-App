@@ -1,2 +1,23 @@
-<h1>Foods#create</h1>
-<p>Find me in app/views/foods/create.html.erb</p>
+<h1>Add Food</h1>
+<%= form_with model: @food do |form| %>
+<div>
+  <%= form.label :Enter Name %><br>
+  <%= form.text_field :name %>
+</div>
+
+<div>
+  <%= form.label :Enter measurement_unit %><br>
+  <%= form.text_field :measurement_unit %>
+</div>
+
+<div>
+  <%= form.label :Enter Price %><br>
+  <%= form.number_field :price %>
+</div>
+
+<div>
+  <%= form.submit %>
+</div>
+<% end %>
+
+
