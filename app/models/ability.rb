@@ -13,8 +13,8 @@ class Ability
       r.user_id == user.id
     end
 
-    # can :destroy, Food do |f|
-    #   f.user_id == user.id
-    # end
+    can :destroy, Food do |f|
+      f.user_id == user.id
+    end
   end
 end
