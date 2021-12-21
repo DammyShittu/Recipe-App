@@ -1,0 +1,31 @@
+<%= link_to 'Back', recipes_path %>
+
+<section class="create-post">
+  <h2>Create A Recipe</h2>
+
+  <%= form_with model: @recipe, url: recipes_path, scope: :recipe do |form| %>
+  <em class="text-small">Fields marked with asterick<span class="text-danger">*</span> are required</em>
+      <div class="mb-3">
+        <%= form.label :name, 'Name', class: "form-label" %><span class="text-danger">*</span>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :description, 'Description', class: "form-label" %><span class="text-danger">*</span>
+        <%= form.text_area :description, class: "form-control" %>
+
+      </div>
+      <div class="mb-3">
+        <%= form.label :cooking_time, 'Cooking time(mins)', class: "form-label" %><span class="text-danger">*</span>
+        <%= form.number_field :cooking_time, class: "form-control" %>
+      </div>
+      <div class="mb-3">
+        <%= form.label :preparation_time, 'Preparation time(mins)', class: "form-label" %><span class="text-danger">*</span>
+        <%= form.number_field :preparation_time, class: "form-control"%>
+      </div>
+      <div class="form-check form-switch">
+        <%= form.check_box :public, role: "switch", id: "flexSwitchCheckDefault", class: "form-check-input" %>
+        <%= form.label :public, class: "form-check-label", for: "flexSwitchCheckDefault" %><span class="text-danger">*</span>
+      </div>
+    <%= form.submit "Create Recipe", disable_with: "Please wait...", class: "btn btn-primary" %>
+  <% end %>
+</section>
