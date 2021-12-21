@@ -22,9 +22,7 @@ Add Food
       <td> <%= food.measurement_unit %> </td>
       <td> $ <%= food.price %></td>
       <td>
-        <%= link_to foods_url do %>
-        delete
-        <% end %>
+        <%= link_to "Delete Food", food_url(food), method: :delete, data: {confirm: "Are you sure"}, :class => "btn btn-sm btn-danger"%>
       </td>
     </tr>
     <% end %>
