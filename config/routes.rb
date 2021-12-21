@@ -9,8 +9,8 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root 
     end 
   end 
-end
-resources :foods, only: [:index, :new, :create, :show, :destroy]
+  resources :foods, only: [:index, :new, :create, :show, :destroy]
 
-resources :recipes, only: [:index, :new, :create, :show, :destroy]
+  resources :recipes, only: [:index, :new, :create, :show, :destroy]
+  resources :general_shopping_list, only: [:index]
 end
