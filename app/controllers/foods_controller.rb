@@ -7,12 +7,16 @@ class FoodsController < ApplicationController
     @food = Food.find_by(id: params[:id])
   end
 
-
   def new
-    @food = Food.create(food_params)
+    @food = Food.new
+  end
+
+
+  def create
+    @food = current_user.foods.create(food_params)
     respond_to do |format|
       format.html do
-        if @post.save
+        if @food.save
           flash[:success] = 'food created succeffuly'
           redirect_to foods_path
         else
