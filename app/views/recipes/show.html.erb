@@ -1,0 +1,44 @@
+<%= link_to 'Back', recipes_path %>
+<div class="container my-5">
+  <div class="w-75 mx-auto">
+    <h2 class="lh-lg text-center text-dark fs-1"><%= @recipe.name %></h2>
+    <div class="d-flex flex-column w-100 gap-3">
+      <div class="d-flex justify-content-between pb-4 border-bottom border-1 border-primary">
+        <h3 class="fs-4">Preparation Time: <%= @recipe.preparation_time %>hour(s)</h3>
+        <%= form_with do |form| %>
+          <div class="form-check form-switch fs-5 align-self-start">
+            <%= form.check_box :public, role: "switch", id: "flexSwitchCheckDefault", class: "form-check-input" %>
+            <%= form.label :public, class: "form-check-label fw-semi-bold", for: "flexSwitchCheckDefault" %>
+          </div>
+        <% end %>
+      </div>
+        <h3 class="fs-4 pb-4 border-bottom border-1 border-success">Cooking Time: <%= @recipe.cooking_time %>hour(s)</h3>
+        <article class="lh-base fs-4 pb-4 border-bottom border-1 border-primary">
+        <h3>Description</h3>
+        <p><%= @recipe.description %></p>
+        </article>
+    </div>
+
+    <section class="d-flex justify-content-between my-5 pb-4 border-bottom border-2 border-success">
+      <%= button_tag 'Generate Shopping List', class: "btn btn-success" %>
+      <%= button_tag 'Add ingredient', class: "btn btn-primary" %>
+    </section>
+
+    <table class="table table-bordered fs-5 border-success my-4">
+      <thead>
+        <tr>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Value</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+       <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>Remove</td>
+    </tr>
+  </div>
+</div>
