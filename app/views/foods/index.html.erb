@@ -13,7 +13,6 @@ Add Food
   <tbody>
     <% @foods.each do | food| %>
     <tr>
-      
       <th scope="row">
         <%= link_to food_url(food.id) do %>
           <%= food.name %>
