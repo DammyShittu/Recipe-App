@@ -8,7 +8,8 @@
         <%= link_to recipe.name, recipe_path(recipe.id), class: "text-decoration-none" %>
         </div>
         <div class="card-body">
-          <p class="card-title fs-5 mb-4">Description: <%= recipe.description %></p>
+          <p class="card-title fs-5 mb-4">By: <%= recipe.user.name %></p>
+          <p class="card-text fs-6 mb-4">Description: <%= recipe.description %></p>
           <div class="d-flex justify-content-between">
             <span class="card-text">Cooking Time: <%= recipe.cooking_time %> minute(s)</span><br>
             <span class="card-text">Preparation Time: <%= recipe.preparation_time %> minute(s)</span>
