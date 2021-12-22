@@ -5,7 +5,7 @@ class CreateRecipes < ActiveRecord::Migration[6.1]
       t.integer :preparation_time
       t.integer :cooking_time
       t.text :description
-      t.boolean :public
+      t.boolean :public, default: false
 
       t.timestamps
     end
