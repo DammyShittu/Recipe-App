@@ -1,0 +1,11 @@
+ <%= form_with model: recipe, url: recipes_path do |form| %>
+          <div class="form-check form-switch fs-5 align-self-start">
+            <% if !recipe.public %>
+              <%= form.check_box :public, role: "switch", id: "flexSwitchCheckDefault", class: "form-check-input" %>
+              <%= form.label :public, class: "form-check-label fw-semi-bold", for: "flexSwitchCheckDefault" %>
+            <% else %>
+              <%= form.check_box :public, role: "switch", id: "flexSwitchCheckChecked", class: "form-check-input" %>
+              <%= form.label :public, class: "form-check-label fw-semi-bold", for: "flexSwitchCheckChecked" %>
+            <% end %>
+          </div>
+        <% end %>
