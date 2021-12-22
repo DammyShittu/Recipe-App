@@ -16,16 +16,11 @@ class RecipeFoodsController < ApplicationController
   end
 
   def destroy
-    @ingredient = RecipeFood.find([params{:id}])
+    @recipe_food = RecipeFood.includes(:recipe, :food).find(params[:id])
+    @recipe_food.delete
 
     respond_to do |format|
-      format.html do
-        if @ingredient.save
-          redirect_to recipe_path(@recipe.id), notice: 'Ingredient deleted successfully'
-        else
-          redirect_to recipe_path(@recipe.id), alert: 'Error, Recipe not deleted!'
-        end
-      end
+      format.html { redirect_to recipe_path(@recipe.id), notice: 'Ingredient deleted successfully' }
     end
   end
 

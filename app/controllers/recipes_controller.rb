@@ -6,9 +6,9 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes
   end
 
-  def new
-    @recipe = Recipe.new
-  end
+  # def new
+  #   @recipe = Recipe.new
+  # end
 
   def create
     @recipe = current_user.recipes.build(recipe_params)
@@ -27,7 +27,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.includes(:recipe_foods).find(params[:id])
     @foods = current_user.foods.all
     @recipe_food = RecipeFood.find_by(recipe_id: params[:id])
-    
+
   end
 
   def destroy
