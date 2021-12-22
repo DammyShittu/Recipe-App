@@ -17,10 +17,10 @@ class FoodsController < ApplicationController
     respond_to do |format|
       format.html do
         if @food.save
-          flash[:success] = 'food created succeffuly'
+          flash[:notice] = 'food created succeffuly'
           redirect_to foods_path
         else
-          flash[:error] = 'food not created try again'
+          flash[:alert] = 'food not created try again'
           render :new
         end
       end
