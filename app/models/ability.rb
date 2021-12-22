@@ -6,6 +6,7 @@ class Ability
     cannot :read, Recipe, public: false
 
     return unless user.present?
+
     can :read, :all
     can :create, :all
 
