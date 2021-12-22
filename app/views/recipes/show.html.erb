@@ -1,5 +1,5 @@
 <div class="container my-5">
-  <div class="w-100 mx-auto">
+  <div class="w-75 mx-auto">
     <div class="d-flex justify-content-between align-items-center">
       <%= link_to 'Back', recipes_path, class: "btn btn-primary" %>
       <% if @recipe.user_id == current_user.id %>
@@ -26,9 +26,9 @@
     </div>
 
     <% if @recipe.user_id == current_user.id %>
-      <section class="d-flex justify-content-between my-5 pb-4 border-bottom border-2 border-success">
+      <section class="d-flex justify-content-center align-items-center gap-5 my-5 pb-4 border-bottom border-2 border-success">
         <%= button_tag 'Generate Shopping List', class: "btn btn-success" %>
-        <%= button_tag 'Add ingredient', class: "btn btn-primary" %>
+        <%= render 'ingredients_modal', recipe: @recipe %>
       </section>
     <% end %>
 
@@ -42,11 +42,14 @@
         </tr>
       </thead>
        <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>Remove</td>
-    </tr>
+       <% @recipe.recipe_foods.each do |r| %>
+        <tr>
+
+          <th scope="row"><%= r.name %></th>
+          <td><%= r.quantity %></td>
+          <%# <td><%= @recipe_food.calc_value(r.quantity, r.food.price) %></td> %>
+        </tr>
+    <% end %>
+    </tbody>
   </div>
 </div>
