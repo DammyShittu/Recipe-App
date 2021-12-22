@@ -1,0 +1,18 @@
+<section class="container w-50 mx-auto mt-5">
+ <h2 class="fs-1 lh-lg fw-semibold mt-5">Public Recipes</h2>
+  <div>
+    <ul class="m-0 p-0">
+      <% @recipes.each do |recipe| %>
+      <li class="card list-style-none mb-3">
+        <div class="card-header fs-4">
+        <%= link_to recipe.name, recipe_path(recipe.id) %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">By: <%= recipe.user.name %></h5>
+          <p class="card-text fs-6">With supporting text below as a natural lead-in to additional content.</p>
+        </div>
+      </li>
+      <% end %>
+        </ul>
+  </div>
+</section>
