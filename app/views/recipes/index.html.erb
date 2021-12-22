@@ -1,16 +1,8 @@
-<p class="navbar-text float-right">
-<% if user_signed_in? %>
-  Welcome! You are logged in as <strong><%= current_user.email %></strong>.
-  <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'navbar-link'  %>
-<% else %>
-  <%= link_to "Sign up", new_user_registration_path, class: 'navbar-link'  %> |
-  <%= link_to "Login", new_user_session_path, class: 'navbar-link'  %>
-<% end %>
-</p>
-
-<%= link_to 'Create A Recipe', new_recipe_path %>
-
-<section class="user_card">
+<section class="container mt-2">
+  <div class="d-flex justify-content-end">
+    <%= link_to 'Create A Recipe', new_recipe_path, class: "btn btn-primary" %>
+  </div>
+  <h2 class="fs-1 lh-lg fw-semibold mt-5">My Recipes</h2>
   <ul>
     <% @recipes.order(:created_at).each do |recipe| %>
     <li>
