@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
-  before_action :set_recipe, only: %i[show destroy]
+  before_action :set_recipe, only: %i[destroy]
 
   def index
     @recipes = current_user.recipes
@@ -21,6 +21,12 @@ class RecipesController < ApplicationController
         end
       end
     end
+  end
+
+  def show
+    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
+    @foods = current_user.foods.all
+    @recipe_food = RecipeFood.find_by(id: params[:recipe_id])
   end
 
   def destroy
