@@ -12,8 +12,9 @@
             <tr>
               <% if r.food %>
                 <th scope="row"> <%= r.food.name %></th>
-                <td><%= r.quantity %><%= r.food.measurement_unit if r.food %></td>
-                <td>$<%= r.calc_value(r.quantity, r.food.price) if r.food %></td>
+                <td><%= r.quantity %><%= r.food.measurement_unit %></td>
+                <td>$<%= r.calc_value(r.quantity, r.food.price) %></td>
+              <% end %>
                 <td>
                   <% if current_user.id == r.recipe.user_id %>
                     <%= link_to 'Remove', "/recipes/#{rec.id}/recipe_foods/#{r.id}", method: :delete, class: 'btn btn-danger' %>

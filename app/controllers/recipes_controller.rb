@@ -6,10 +6,6 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes
   end
 
-  # def new
-  #   @recipe = Recipe.new
-  # end
-
   def create
     @recipe = current_user.recipes.build(recipe_params)
     respond_to do |format|
