@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :foods, only: [:index, :new, :create, :show, :destroy]
+  resources :foods, only: [:index, :create, :show, :destroy]
   resources :recipes, only: [:index, :create, :show, :destroy] do
     resources :recipe_foods, only:  [:create, :destroy]
   end
