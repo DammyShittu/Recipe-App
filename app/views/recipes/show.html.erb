@@ -1,0 +1,39 @@
+<div class="container my-5">
+  <div class="w-75 mx-auto">
+    <div class="d-flex justify-content-between align-items-center">
+    <div class="space">
+      <%= link_to 'Back', authenticated_root_path, class: "btn btn-primary" %>
+    </div>
+      <% if @recipe.user_id == current_user.id %>
+      <%= render '/foods/food_modal' %>
+      <% end %>
+    </div>
+
+    <h2 class="lh-lg text-center text-dark fs-1 mb-5"><%= @recipe.name %></h2>
+
+    <div class="d-flex flex-column w-100 gap-5">
+      <div class="d-flex justify-content-between pb-4 border-bottom border-1 border-primary">
+        <h3 class="fs-5 fw-normal">Preparation Time: <%= @recipe.preparation_time %> minute(s)</h3>
+
+        <%= render partial: 'public', locals: { recipe: @recipe } %>
+
+      </div>
+        <h3 class="fs-5 fw-normal pb-4 border-bottom border-1 border-success">
+        Cooking Time: <%= @recipe.cooking_time %> minute(s)
+        </h3>
+        <article class="lh-base fs-5 pb-4 border-bottom border-1 border-primary">
+        <h3>Description</h3>
+        <p><%= @recipe.description %></p>
+        </article>
+    </div>
+
+    <% if @recipe.user_id == current_user.id %>
+      <section class="d-flex justify-content-center align-items-center gap-5 my-5 pb-4 border-bottom border-2 border-success">
+        <%= button_tag 'Generate Shopping List', class: "btn btn-success" %>
+        <%= render 'ingredients_modal', recipe: @recipe %>
+      </section>
+    <% end %>
+
+    <%= render 'ingredient_table', rec: @recipe %>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<%= link_to "Back", foods_url, :class => "btn btn-primary btn-sm mx-2 my-2"%>
+<h1> <%=@food.name %> Details</h1>
+<div class="card">
+  <h5 class="card-header"> <%= @food.name %></h5>
+  <div class="card-body">
+    <h5 class="card-title">Measurement Unit: <%= @food.measurement_unit %></h5>
+    <p class="card-text">Price: $<%= @food.price %></p>
+    <%= link_to "Delete Food", food_url(@food), method: :delete, data: {confirm: "Are you sure"}, :class => "btn btn-danger"%>
+  </div>
+</div>

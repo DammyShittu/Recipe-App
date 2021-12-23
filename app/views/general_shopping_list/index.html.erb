@@ -1,0 +1,28 @@
+<div class="container mt-4">
+<h1 class="mt-3 mb-2 text-center">Shopping List</h1>
+<div class="d-flex justify-content-between my-5">
+  <h4>Amount of food Items to buy: <%= @foods.size %> </h4>
+  <h4>Total value of food needed: $<%= @total %></h4>
+</div>
+<table class="table table-striped fs-5 border-success my-4">
+  <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col"> Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @foods.each do | food | %>
+    <% qty=RecipeFood.joins(:food).where(food_id: food.id).sum( 'quantity') %>
+    <tr>
+      <th scope="row">
+        <%= food.name %>
+      </th>
+      <td> <%= qty %> <%= food.measurement_unit %> </td>
+      <td> $<%= food.price %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

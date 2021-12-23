@@ -1,0 +1,38 @@
+<div class="container mt-4">
+   <%= render "food_modal" %>
+    <h2 class="fs-1 fw-semibold mt-3 mb-5">My Foods</h2>
+    <% if @foods.empty? %>
+    <p class="d-flex justify-content-center align-items-center text-center fs-4">
+      You do not have any foods yet<br> Kindly create one with the "Add Food" button above
+    </p>
+  <% end %>
+  <table class="table table-striped fs-5 border-success my-4">
+    <thead>
+      <tr>
+        <th scope="col">Food</th>
+        <th scope="col">Measurement Unit</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @foods.each do |food| %>
+      <tr>
+        <th scope="row">
+          <%= link_to food_url(food.id), class: "text-decoration-none" do %>
+          <%= food.name %>
+          <% end %>
+        </th>
+        <td> <%= food.measurement_unit %> </td>
+        <td> $ <%= food.price %></td>
+        <% if can? :destroy, food %>
+        <td>
+          <%= link_to "Delete Food", food_url(food), method: :delete, data: {confirm: "Are you sure"}, :class => "btn btn-sm btn-danger"%>
+        </td>
+        <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>
