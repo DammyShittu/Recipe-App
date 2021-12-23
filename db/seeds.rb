@@ -15,3 +15,5 @@ User.second.foods.create!(name: "Mukimo", measurement_unit: "grams", price: 50)
 User.last.foods.create!(name: "Chapati", measurement_unit: "grams", price: 150)
 User.third.foods.create!(name: "Sugar", measurement_unit: "grams", price: 590)
 User.second.foods.create!(name: "Karanga", measurement_unit: "grams", price: 5900)
+
+    # @food = Food.create(name: "Mukimo", measurement_unit: "grams", price: 50, user_id: @user.id)

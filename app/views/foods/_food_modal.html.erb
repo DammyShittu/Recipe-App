@@ -1,0 +1,41 @@
+<div class="d-flex justify-content-end">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#foodModal">
+    Add Food
+  </button>
+</div>
+
+<div class="modal fade" id="foodModal" tabindex="-1" aria-labelledby="foodModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="foodModalLabel">Add A New Food</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <%= form_with  model: @food, url: foods_path, method: :post do |form| %>
+
+	            <div class="mb-3">
+                <%= form.label :name, class: "form-label" %><span class="text-danger">*</span>
+                <%= form.text_field :name, class: "form-control", required: true %>
+              </div>
+
+              <div class="mb-3">
+                <%= form.label :measurement_unit, class: "form-label" %><span class="text-danger">*</span>
+                <%= form.text_field :measurement_unit, class: "form-control", required: true %>
+              </div>
+
+              <div class="mb-3">
+                <%= form.label :Price, class: "form-label" %><span class="text-danger">*</span>
+                <%= form.number_field :price, class: "form-control", required: true %>
+              </div>
+              <br>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <%= form.submit 'Save Food', class: "btn btn-success" %>
+              </div>
+            <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
