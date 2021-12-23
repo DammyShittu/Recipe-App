@@ -1,7 +1,7 @@
 <div class="container my-5">
-  <div class="w-100 mx-auto">
+  <div class="w-75 mx-auto">
     <div class="d-flex justify-content-between align-items-center">
-      <%= link_to 'Back', recipes_path, class: "btn btn-primary" %>
+      <%= link_to 'Back', authenticated_root_path, class: "btn btn-primary" %>
       <% if @recipe.user_id == current_user.id %>
       <%= link_to 'Add Food', new_food_url, :class => "btn btn-dark"%>
       <% end %>
@@ -11,42 +11,27 @@
 
     <div class="d-flex flex-column w-100 gap-5">
       <div class="d-flex justify-content-between pb-4 border-bottom border-1 border-primary">
-        <h3 class="fs-4">Preparation Time: <%= @recipe.preparation_time %>min(s)</h3>
+        <h3 class="fs-5 fw-normal">Preparation Time: <%= @recipe.preparation_time %> minute(s)</h3>
 
         <%= render partial: 'public', locals: { recipe: @recipe } %>
 
       </div>
-        <h3 class="fs-4 pb-4 border-bottom border-1 border-success">
-        Cooking Time: <%= @recipe.cooking_time %>min(s)
+        <h3 class="fs-5 fw-normal pb-4 border-bottom border-1 border-success">
+        Cooking Time: <%= @recipe.cooking_time %> minute(s)
         </h3>
-        <article class="lh-base fs-4 pb-4 border-bottom border-1 border-primary">
+        <article class="lh-base fs-5 pb-4 border-bottom border-1 border-primary">
         <h3>Description</h3>
         <p><%= @recipe.description %></p>
         </article>
     </div>
 
     <% if @recipe.user_id == current_user.id %>
-      <section class="d-flex justify-content-between my-5 pb-4 border-bottom border-2 border-success">
+      <section class="d-flex justify-content-center align-items-center gap-5 my-5 pb-4 border-bottom border-2 border-success">
         <%= button_tag 'Generate Shopping List', class: "btn btn-success" %>
-        <%= button_tag 'Add ingredient', class: "btn btn-primary" %>
+        <%= render 'ingredients_modal', recipe: @recipe %>
       </section>
     <% end %>
 
-    <table class="table table-bordered fs-5 border-success my-4">
-      <thead>
-        <tr>
-          <th scope="col">Food</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Value</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-       <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>Remove</td>
-    </tr>
+    <%= render 'ingredient_table', rec: @recipe %>
   </div>
 </div>

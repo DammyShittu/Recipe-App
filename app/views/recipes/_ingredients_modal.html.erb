@@ -1,0 +1,36 @@
+<% if current_user.id == recipe.user_id %>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ingredientModal">
+    Add ingredient
+  </button>
+<% end %>
+
+<div class="modal fade" id="ingredientModal" tabindex="-1" aria-labelledby="ingredientModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ingredientModalLabel">Add ingredient to "<%= recipe.name %>"</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <% if @foods.empty?%>
+          <p>No food added yet!<br> You can add one by navigating to the 'My foods' section.</p>
+        <% else %>
+            <%= form_with  model: [@recipe, @recipe.recipe_foods.build], method: :post do |form| %>
+              <%= form.select :food_id, @foods.collect { |food| [food.name, food.id] } %>
+              <br>
+	            <div class="mb-3">
+		            <label for="name" class="form-label">Quantity</label>
+		            <%= form.text_field :quantity, required: true, class: "form-control", id: "quantity"%>
+	            </div>
+              <br>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <%= form.submit 'Save', class: "btn btn-success" %>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>

@@ -1,15 +1,19 @@
-<section class="container w-50 mx-auto mt-5">
+<section class="container mt-5">
  <h2 class="fs-1 lh-lg fw-semibold mt-5">Public Recipes</h2>
   <div>
     <ul class="m-0 p-0">
       <% @recipes.each do |recipe| %>
-      <li class="card list-style-none mb-3">
+      <li class="card list-style-none mb-4 border border-dark">
         <div class="card-header fs-4">
-        <%= link_to recipe.name, recipe_path(recipe.id) %>
+        <%= link_to recipe.name, recipe_path(recipe.id), class: "text-decoration-none" %>
         </div>
         <div class="card-body">
-          <h5 class="card-title">By: <%= recipe.user.name %></h5>
-          <p class="card-text fs-6">With supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-title fs-5 mb-4">By: <%= recipe.user.name %></p>
+          <p class="card-text fs-6 mb-4">Description: <%= recipe.description %></p>
+          <div class="d-flex justify-content-between">
+            <span class="card-text">Cooking Time: <%= recipe.cooking_time %> minute(s)</span><br>
+            <span class="card-text">Preparation Time: <%= recipe.preparation_time %> minute(s)</span>
+          </div>
         </div>
       </li>
       <% end %>

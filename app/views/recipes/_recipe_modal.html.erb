@@ -1,0 +1,51 @@
+<div class="d-flex justify-content-end">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ingredientModal">
+    Create A Recipe
+  </button>
+</div>
+
+<div class="modal fade" id="ingredientModal" tabindex="-1" aria-labelledby="ingredientModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ingredientModalLabel">Add A New Recipe</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+            <%= form_with  model: @recipe, url: recipes_path, scope: :recipe, method: :post do |form| %>
+
+	            <div class="mb-3">
+                <%= form.label :name, 'Name', class: "form-label" %><span class="text-danger">*</span>
+                <%= form.text_field :name, class: "form-control", required: true %>
+              </div>
+
+              <div class="mb-3">
+                <%= form.label :description, 'Description', class: "form-label" %><span class="text-danger">*</span>
+                <%= form.text_area :description, class: "form-control", required: true, size: "10x5" %>
+              </div>
+
+              <div class="mb-3">
+                <%= form.label :cooking_time, 'Cooking time(mins)', class: "form-label" %><span class="text-danger">*</span>
+                <%= form.number_field :cooking_time, class: "form-control", required: true %>
+              </div>
+
+              <div class="mb-3">
+                <%= form.label :preparation_time, 'Preparation time(mins)', class: "form-label" %><span class="text-danger">*</span>
+                <%= form.number_field :preparation_time, class: "form-control", required: true %>
+              </div>
+
+              <div class="form-check form-switch fs-6 align-self-start">
+                <%= form.check_box :public, role: "switch", id: "flexSwitchCheckDefault", class: "form-check-input" %>
+                <%= form.label :public, class: "form-check-label fw-semi-bold", for: "flexSwitchCheckDefault" %>
+              </div>
+              <br>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <%= form.submit 'Save', class: "btn btn-success" %>
+              </div>
+            <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
