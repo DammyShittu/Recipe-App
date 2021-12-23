@@ -8,19 +8,15 @@ class FoodsController < ApplicationController
     @food = Food.find_by(id: params[:id])
   end
 
-  def new
-    @food = Food.new
-  end
-
   def create
-    @food = current_user.foods.create(food_params)
+    @food = current_user.foods.build(food_params)
     respond_to do |format|
       format.html do
         if @food.save
-          flash[:notice] = 'food created succeffuly'
+          flash[:notice] = 'Food created successfully'
           redirect_to foods_path
         else
-          flash[:alert] = 'food not created try again'
+          flash[:alert] = 'Food not created try again'
           render :new
         end
       end
@@ -36,6 +32,6 @@ class FoodsController < ApplicationController
   private
 
   def food_params
-    params.require(:food).permit(:name, :measurement_unit, :price)
+    params.permit(:name, :measurement_unit, :price)
   end
 end

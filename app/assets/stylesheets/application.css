@@ -35,3 +35,15 @@ li {
   position: relative;
   z-index: 1;
 }
+
+.active {
+  transition: 300ms ease-in;
+}
+
+.change:active {
+  color: red;
+}
+
+.space {
+  width: 85%;
+}
