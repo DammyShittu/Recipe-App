@@ -4,8 +4,9 @@ RSpec.feature 'Recipe #Show', type: :feature do
   background do
     visit new_user_session_path
 
-    @user = User.create(name: "Dammy", email: "dammy@gmail.com", password: "qwerty")
-    @recipe = Recipe.create(name: "Curry", description: "Very nice one", cooking_time: 10, preparation_time: 20, user_id: @user.id)
+    @user = User.create(name: 'Dammy', email: 'dammy@gmail.com', password: 'qwerty')
+    @recipe = Recipe.create(name: 'Curry', description: 'Very nice one', cooking_time: 10, preparation_time: 20,
+                            user_id: @user.id)
 
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password
@@ -34,5 +35,4 @@ RSpec.feature 'Recipe #Show', type: :feature do
     expect(page).to have_button 'Generate Shopping List'
     expect(page).to have_button 'Add ingredient'
   end
-
 end

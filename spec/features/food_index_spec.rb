@@ -4,8 +4,8 @@ RSpec.feature 'Food #Index', type: :feature do
   background do
     visit new_user_session_path
 
-    @user = User.create(name: "Kalunge", email: "1@4.com", password: "qwerty")
-    @food = Food.create(name: "Mukimo", measurement_unit: "grams", price: 50, user_id: @user.id)
+    @user = User.create(name: 'Kalunge', email: '1@4.com', password: 'qwerty')
+    @food = Food.create(name: 'Mukimo', measurement_unit: 'grams', price: 50, user_id: @user.id)
 
     fill_in 'Email', with: @user.email
     fill_in 'Password', with: @user.password
