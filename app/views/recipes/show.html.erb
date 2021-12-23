@@ -4,6 +4,7 @@
       <%= link_to 'Back', authenticated_root_path, class: "btn btn-primary" %>
       <% if @recipe.user_id == current_user.id %>
       <%= link_to 'Add Food', new_food_url, :class => "btn btn-dark"%>
+      
       <% end %>
     </div>
 

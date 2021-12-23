@@ -34,12 +34,6 @@ RSpec.describe Recipe, type: :model do
     expect(@recipe).to be_valid
   end
 
-  it 'Must have a price' do
-    @user = User.create!(name: 'shittu', email: 'shittu@gmail.com', password: 'qwerty')
-    @recipe = @user.recipes.create(name: 'Chapo', cooking_time: 150, description: 'new testts', public: true)
-    expect(@recipe).to be_valid
-  end
-
   it 'invalid if cooking_time is absent' do
     @user = User.create!(name: 'shittu', email: 'shittu@gmail.com', password: 'qwerty')
     @recipe = @user.recipes.create(name: 'Chapo', description: 'new testts', public: true)
@@ -55,7 +49,7 @@ RSpec.describe Recipe, type: :model do
 
   it 'Must have a description' do
     @user = User.create!(name: 'shittu', email: 'shittu@gmail.com', password: 'qwerty')
-    @recipe = @user.recipes.create(name: 'Chapo', preparation_time: 30, cooking_time: 150, description: 'new testts',
+    @recipe = @user.recipes.create(name: 'Chapo', preparation_time: 30, cooking_time: 150,
                                    public: true)
     expect(@recipe).to_not be_valid
   end
