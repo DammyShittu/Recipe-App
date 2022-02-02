@@ -4,7 +4,8 @@
 
 ## Live Demo
 
-This [app](https://murmuring-headland-88783.herokuapp.com/) is currently being hosted on Heroku
+This [app](https://recipes-appp.herokuapp.com/) is currently being hosted on Heroku
+
 ## Screenshot
 
 Home Page
