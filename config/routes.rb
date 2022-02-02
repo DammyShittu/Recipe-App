@@ -4,10 +4,10 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'public_recipes#index', as: :authenticated_root
+      root 'recipes#index', as: :authenticated_root
     end
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      root 'public_recipes#index', as: :unauthenticated_root
     end
   end
 
